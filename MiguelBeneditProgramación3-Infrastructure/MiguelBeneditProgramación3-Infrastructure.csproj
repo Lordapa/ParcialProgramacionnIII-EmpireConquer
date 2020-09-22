@@ -5,4 +5,9 @@
     <RootNamespace>MiguelBeneditProgramación3_Infrastructure</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Data\Repositories\" />
+    <Folder Include="Logging\" />
+  </ItemGroup>
+
 </Project>
