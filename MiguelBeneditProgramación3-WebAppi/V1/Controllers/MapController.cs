@@ -3,9 +3,9 @@ using MiguelBeneditProgramación3_Core.Interfaces.Services;
 
 namespace MiguelBeneditProgramación3_WebApplication.V1.Controllers
 {
-    public class QuestController : BaseApiController<Quest>
+    public class MapController : BaseApiController<Map>
     {
-        public QuestController(IBaseService baseService) : base(baseService)
+        public MapController(IBaseService baseService) : base(baseService)
         {
         }
     }

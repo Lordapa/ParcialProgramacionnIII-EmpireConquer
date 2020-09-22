@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using MiguelBeneditProgramación3_Core.Entities;
+using MiguelBeneditProgramación3_Core.Interfaces.Services;
 
 namespace MiguelBeneditProgramación3_WebApplication.V1.Controllers
 {
-    public class CityController : BaseController
+    public class CityController : BaseApiController<City>
     {
+        public CityController(IBaseService baseService) : base(baseService)
+        {
+        }
     }
 }

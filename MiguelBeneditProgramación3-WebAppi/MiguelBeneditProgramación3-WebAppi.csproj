@@ -10,4 +10,8 @@
     <PackageReference Include="NSwag.aspnetcore" Version="13.7.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MiguelBeneditProgramación3-Core\MiguelBeneditProgramación3-Core.csproj" />
+  </ItemGroup>
+
 </Project>

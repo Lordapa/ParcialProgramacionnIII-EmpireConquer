@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using MiguelBeneditProgramación3_Core.Entities;
+using MiguelBeneditProgramación3_Core.Interfaces.Services;
 
 namespace MiguelBeneditProgramación3_WebApplication.V1.Controllers
 {
-    public class EmpireController : BaseController
+    public class EmpireController : BaseApiController<Empire>
     {
+        public EmpireController(IBaseService baseService) : base(baseService)
+        {
+        }
     }
 }
