@@ -5,4 +5,8 @@
     <RootNamespace>MiguelBeneditProgramación3_WebApplication</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MiguelBeneditProgramación3-Core\MiguelBeneditProgramación3-Core.csproj" />
+  </ItemGroup>
+
 </Project>
