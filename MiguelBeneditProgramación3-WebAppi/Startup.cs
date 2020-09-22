@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MiguelBeneditProgramación3_WebApplication.Swagger;
 
 namespace MiguelBeneditProgramación3_WebApplication
 {
@@ -12,17 +14,12 @@ namespace MiguelBeneditProgramación3_WebApplication
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-
-            services.AddOpenApiDocument(configure =>
-            {
-                configure.Title = "Miguel Benedit Parcial Programación III";
-                configure.Version = "V1.0.0";
-                configure.Description = "Empire Conquer, online MMO strategy game";
-            });
+            services.AddVersioning();
+            services.AddSwagger();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApiVersionDescriptionProvider provider)
         {
             if (env.IsDevelopment())
             {
@@ -31,8 +28,7 @@ namespace MiguelBeneditProgramación3_WebApplication
 
             app.UseRouting();
 
-            app.UseOpenApi();
-            app.UseSwaggerUi3();
+            app.UseSwaggerWithVersioning(provider);
 
             app.UseEndpoints(endpoints =>
             {

@@ -5,13 +5,15 @@
     <RootNamespace>MiguelBeneditProgramación3_WebApplication</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="4.1.1" />
-    <PackageReference Include="NSwag.aspnetcore" Version="13.7.4" />
-  </ItemGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Users\MiguelB\source\repos\ParcialProgramacionnIII-EmpireConquer\MiguelBeneditProgramación3-WebAppi\MiguelBeneditProgramación3-WebAppi.xml</DocumentationFile>
+  </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="4.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="4.1.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.2" />
     <ProjectReference Include="..\MiguelBeneditProgramación3-Core\MiguelBeneditProgramación3-Core.csproj" />
   </ItemGroup>
-
 </Project>
