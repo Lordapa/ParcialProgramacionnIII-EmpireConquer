@@ -1,6 +1,6 @@
 ﻿namespace MiguelBeneditProgramación3_Core.Interfaces.Repositories
 {
-    interface IRepository
+    public interface IRepository
     {
     }
 }
