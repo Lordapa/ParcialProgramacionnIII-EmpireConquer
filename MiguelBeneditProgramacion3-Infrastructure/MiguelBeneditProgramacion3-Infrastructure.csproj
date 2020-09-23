@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>MiguelBeneditProgramacion3_Infrastructure</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\Repositories\" />
+    <Folder Include="Logging\" />
+  </ItemGroup>
+
+</Project>
