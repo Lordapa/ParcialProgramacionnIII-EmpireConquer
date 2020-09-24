@@ -2,7 +2,7 @@
 
 namespace MiguelBeneditProgramacion3_Core.Entities
 {
-    public class City:EntityBase<Guid>
+    public class City:EntityBase<long>
     {
         public string Name { get; set; }
         public int Population { get; set; }

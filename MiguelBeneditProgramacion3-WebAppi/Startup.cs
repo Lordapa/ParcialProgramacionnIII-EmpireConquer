@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MiguelBeneditProgramacion3_WebApplication.Swagger;
+using MiguelBeneditProgramacion3_Service.Extensions;
 
 namespace MiguelBeneditProgramacion3_WebApplication
 {
@@ -16,6 +17,7 @@ namespace MiguelBeneditProgramacion3_WebApplication
             services.AddControllers();
             services.AddVersioning();
             services.AddSwagger();
+            services.AddEmpireConquerToModule();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

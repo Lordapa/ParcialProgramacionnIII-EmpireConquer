@@ -3,9 +3,12 @@ using MiguelBeneditProgramacion3_Core.Interfaces.Services;
 
 namespace MiguelBeneditProgramacion3_WebApplication.V1.Controllers
 {
+    /// <summary>
+    /// User api controller
+    /// </summary>
     public class UserController : BaseApiController<User>
     {
-        public UserController(IBaseService baseService) : base(baseService)
+        public UserController(IBaseService<User> baseService) : base(baseService)
         {
         }
     }
