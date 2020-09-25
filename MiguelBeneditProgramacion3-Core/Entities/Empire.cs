@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace MiguelBeneditProgramacion3_Core.Entities
 {
-    public class Empire: EntityBase<long>
+    public class Empire: EntityBase
     {
         public string Name { get; set; }
         public User User { get; set; }

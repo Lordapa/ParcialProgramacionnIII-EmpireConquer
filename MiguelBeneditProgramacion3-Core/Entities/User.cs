@@ -1,6 +1,6 @@
 ﻿namespace MiguelBeneditProgramacion3_Core.Entities
 {
-    public class User : EntityBase<long>
+    public class User : EntityBase
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

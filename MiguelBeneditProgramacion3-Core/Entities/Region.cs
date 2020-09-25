@@ -2,7 +2,7 @@
 
 namespace MiguelBeneditProgramacion3_Core.Entities
 {
-    public class Region:EntityBase<long>
+    public class Region:EntityBase
     {
         public string Name { get; set; }
         public IEnumerable<Ground> Grounds { get; set; }

@@ -1,6 +1,6 @@
 ﻿namespace MiguelBeneditProgramacion3_Core.Entities
 {
-    public class Quest:EntityBase<long>
+    public class Quest:EntityBase
     {
         public string Name { get; set; }
         public string Description { get; set; }

@@ -3,7 +3,7 @@ using System;
 
 namespace MiguelBeneditProgramacion3_Core.Entities
 {
-    public class Heroe:EntityBase<Guid>
+    public class Heroe:EntityBase
     {
         public string Name { get; set; }
         public HeroType Type { get; set; }
@@ -16,5 +16,7 @@ namespace MiguelBeneditProgramacion3_Core.Entities
         public int Life { get; set; }
         public int Speed { get; set; }
         public int Moral { get; set; }
+        public Empire Empire { get; set; }
+        public long EmpireId { get; set; }
     }
 }
