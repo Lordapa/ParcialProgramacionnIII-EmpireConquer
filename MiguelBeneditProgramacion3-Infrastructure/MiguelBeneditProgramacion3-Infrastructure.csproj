@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Data\Seed\" />
     <Folder Include="Data\Repositories\" />
     <Folder Include="Logging\" />
   </ItemGroup>
