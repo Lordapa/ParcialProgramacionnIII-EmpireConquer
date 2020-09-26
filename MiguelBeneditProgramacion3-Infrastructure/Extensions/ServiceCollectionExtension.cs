@@ -18,6 +18,11 @@ namespace MiguelBeneditProgramacion3_Infrastructure.Extensions
 
             service.AddScoped<IRepository<Game>, GameRepository>();
             service.AddScoped<IRepository<Map>, MapRepository>();
+            service.AddScoped<IRepository<City>, CityRepository>();
+            service.AddScoped<IRepository<Empire>, EmpireRepository>();
+            service.AddScoped<IRepository<Heroe>, HeroeRepository>();
+            service.AddScoped<IRepository<Quest>, QuestRepository>();
+            service.AddScoped<IRepository<User>, UserRepository>();
         }
     }
 }

@@ -19,7 +19,6 @@ namespace MiguelBeneditProgramacion3_Infrastructure.Data.EntityFramework
         public virtual async Task<TEntity> AddAsync(TEntity entity)
         {
             await DBContext.AddAsync<TEntity>(entity).ConfigureAwait(false);
-
             return entity;
         }
 
