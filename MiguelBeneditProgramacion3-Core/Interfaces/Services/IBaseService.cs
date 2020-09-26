@@ -23,7 +23,7 @@ namespace MiguelBeneditProgramacion3_Core.Interfaces.Services
         /// </summary>
         /// <param name="userName">userName</param>
         /// <param name="value">entity</param>
-        Task CreateAsync(T value, string userName);
+        Task<T> CreateAsync(T value, string userName);
 
         /// <summary>
         /// updates an entity async.
@@ -31,7 +31,7 @@ namespace MiguelBeneditProgramacion3_Core.Interfaces.Services
         /// <param name="Id">Id</param>
         /// <param name="userName">userName</param>
         /// <param name="value">entity</param>
-        Task UpdateAsync(long Id, T value, string userName);
+        Task<T> UpdateAsync(long Id, T value, string userName);
 
         /// <summary>
         /// Deletes an entity by id async.

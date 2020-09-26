@@ -1,39 +1,58 @@
-﻿using MiguelBeneditProgramacion3_Core.Interfaces.Services;
+﻿using MiguelBeneditProgramacion3_Core.Entities;
+using MiguelBeneditProgramacion3_Core.Interfaces.Repositories;
+using MiguelBeneditProgramacion3_Core.Interfaces.Services;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace MiguelBeneditProgramacion3_Service.Services
 {
-    public abstract class BaseService<TEntity> : IBaseService<TEntity> where TEntity: class
+    public abstract class BaseService<TEntity> : IBaseService<TEntity> where TEntity: EntityBase
     {
-        ///<inheritdoc cref="IBaseService{TEntity}"/>
-        public virtual Task CreateAsync(TEntity value, string userName)
+        private readonly IRepository<TEntity> _repository;
+        
+        public BaseService(IRepository<TEntity> repository)
         {
-            throw new System.NotImplementedException();
+            _repository = repository;
         }
 
         ///<inheritdoc cref="IBaseService{TEntity}"/>
-        public virtual Task DeleteAsync(long Id)
+        public async virtual Task<TEntity> CreateAsync(TEntity value, string userName)
         {
-            throw new System.NotImplementedException();
+            value.CreatedBy = userName;
+            value.CreatedDate = DateTime.UtcNow;
+            value.UpdatedBy = userName;
+            value.UpdatedDate = DateTime.UtcNow;
+
+            return await _repository.AddAsync(value).ConfigureAwait(false);
         }
 
         ///<inheritdoc cref="IBaseService{TEntity}"/>
-        public virtual Task<IEnumerable<TEntity>> GetAsync()
+        public virtual async Task DeleteAsync(long id)
         {
-            throw new System.NotImplementedException();
+            await _repository.DeleteAsync(id).ConfigureAwait(false);
         }
 
         ///<inheritdoc cref="IBaseService{TEntity}"/>
-        public virtual Task<TEntity> GetAsync(long Id)
+        public virtual async Task<IEnumerable<TEntity>> GetAsync()
         {
-            throw new System.NotImplementedException();
+            return await _repository.GetAsync().ConfigureAwait(false);
         }
 
         ///<inheritdoc cref="IBaseService{TEntity}"/>
-        public virtual Task UpdateAsync(long Id, TEntity value, string userName)
+        public virtual async Task<TEntity> GetAsync(long id)
         {
-            throw new System.NotImplementedException();
+            return await _repository.GetAsync(id).ConfigureAwait(false);
+        }
+
+        ///<inheritdoc cref="IBaseService{TEntity}"/>
+        public virtual async Task<TEntity> UpdateAsync(long id, TEntity value, string userName)
+        {
+            value.UpdatedBy = userName;
+            value.UpdatedDate = DateTime.UtcNow;
+            value.Id = id;
+
+            return await _repository.Update(value).ConfigureAwait(false);
         }
     }
 }
