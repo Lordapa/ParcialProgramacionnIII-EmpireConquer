@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MiguelBeneditProgramacion3_Core.Entities
+﻿namespace MiguelBeneditProgramacion3_Core.Entities
 {
     public class City:EntityBase
     {

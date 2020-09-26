@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MiguelBeneditProgramacion3_Core.Entities;
-using System.IO.Compression;
 
 namespace MiguelBeneditProgramacion3_Infrastructure.Data.EntityFramework
 {
@@ -16,6 +15,11 @@ namespace MiguelBeneditProgramacion3_Infrastructure.Data.EntityFramework
         public DbSet<Quest> Quests { get; set; }
         public DbSet<Region> Regions { get; set; }
 
+        public DBEmpireContext(DbContextOptions<DBEmpireContext> options) : base(options)
+        {
+
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -29,6 +33,11 @@ namespace MiguelBeneditProgramacion3_Infrastructure.Data.EntityFramework
                 g.HasOne(g => g.Map);
 
                 g.HasMany(g => g.Empires);
+
+                g.Property(g => g.StartDate).IsRequired();
+                g.Property(g => g.Rounds).IsRequired();
+                g.Property(g => g.ProtectionTime).IsRequired();
+
             });
 
             modelBuilder.Entity<Empire>(e =>
@@ -47,6 +56,64 @@ namespace MiguelBeneditProgramacion3_Infrastructure.Data.EntityFramework
                 .IsRequired();
 
                 e.Property(e => e.Name)
+                .IsRequired();
+            });
+
+            modelBuilder.Entity<City>(c =>
+            {
+                c.Property(c => c.Name)
+                .IsRequired();
+            });
+
+            modelBuilder.Entity<Map>(m =>
+            {
+                m.Property(m => m.Name)
+                .IsRequired();
+
+                m.HasMany(m => m.Regions);
+            });
+
+            modelBuilder.Entity<Region>(r =>
+            {
+                r.Property(r => r.Name)
+                .IsRequired();
+
+                r.HasMany(r => r.Grounds);
+            });
+
+            modelBuilder.Entity<Ground>(g =>
+            {
+                g.Property(g => g.Name)
+                .IsRequired();
+
+                g.Property(g => g.Type)
+                .IsRequired();
+
+                g.Property(g => g.Image)
+                .IsRequired();
+            });
+
+            modelBuilder.Entity<Heroe>(h =>
+            {
+                h.Property(h => h.Name)
+                .IsRequired();
+
+                h.Property(h => h.Avatar)
+               .IsRequired();
+
+                h.Property(h => h.Type)
+                .IsRequired();
+            });
+
+            modelBuilder.Entity<Quest>(q =>
+            {
+                q.Property(q => q.Name)
+                .IsRequired();
+
+                q.Property(q => q.Image)
+                .IsRequired();
+
+                q.Property(q => q.LevelRequired)
                 .IsRequired();
             });
         }

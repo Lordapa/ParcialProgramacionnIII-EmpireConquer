@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MiguelBeneditProgramacion3-Core\MiguelBeneditProgramacion3-Core.csproj" />
+    <ProjectReference Include="..\MiguelBeneditProgramacion3-Infrastructure\MiguelBeneditProgramacion3-Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
