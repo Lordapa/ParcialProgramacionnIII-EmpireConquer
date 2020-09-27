@@ -1,4 +1,5 @@
 ﻿using MiguelBeneditProgramacion3_Core.Entities;
+using MiguelBeneditProgramacion3_Core.Interfaces;
 using MiguelBeneditProgramacion3_Core.Interfaces.Repositories;
 using MiguelBeneditProgramacion3_Core.Interfaces.Services;
 using System;
@@ -10,10 +11,12 @@ namespace MiguelBeneditProgramacion3_Service.Services
     public abstract class BaseService<TEntity> : IBaseService<TEntity> where TEntity: EntityBase
     {
         private readonly IRepository<TEntity> _repository;
+        private readonly IUnitOfWork _unitOfWork;
         
-        public BaseService(IRepository<TEntity> repository)
+        public BaseService(IUnitOfWork unitOfWork, IRepository<TEntity> repository)
         {
             _repository = repository;
+            _unitOfWork = unitOfWork;
         }
 
         ///<inheritdoc cref="IBaseService{TEntity}"/>
@@ -24,13 +27,18 @@ namespace MiguelBeneditProgramacion3_Service.Services
             value.UpdatedBy = userName;
             value.UpdatedDate = DateTime.UtcNow;
 
-            return await _repository.AddAsync(value).ConfigureAwait(false);
+            var entity = await _repository.AddAsync(value).ConfigureAwait(false);
+
+            await _unitOfWork.SaveAsync().ConfigureAwait(false);
+
+            return entity;
         }
 
         ///<inheritdoc cref="IBaseService{TEntity}"/>
         public virtual async Task DeleteAsync(long id)
         {
             await _repository.DeleteAsync(id).ConfigureAwait(false);
+            await _unitOfWork.SaveAsync().ConfigureAwait(false);
         }
 
         ///<inheritdoc cref="IBaseService{TEntity}"/>
@@ -51,8 +59,12 @@ namespace MiguelBeneditProgramacion3_Service.Services
             value.UpdatedBy = userName;
             value.UpdatedDate = DateTime.UtcNow;
             value.Id = id;
+            
+            var entity = await _repository.Update(value).ConfigureAwait(false);
 
-            return await _repository.Update(value).ConfigureAwait(false);
+            await _unitOfWork.SaveAsync().ConfigureAwait(false);
+
+            return entity;
         }
     }
 }

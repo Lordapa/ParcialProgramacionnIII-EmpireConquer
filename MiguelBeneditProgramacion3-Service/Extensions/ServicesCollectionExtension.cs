@@ -1,7 +1,9 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MiguelBeneditProgramacion3_Core.Entities;
+using MiguelBeneditProgramacion3_Core.Interfaces;
 using MiguelBeneditProgramacion3_Core.Interfaces.Services;
+using MiguelBeneditProgramacion3_Infrastructure.Data.EntityFramework;
 using MiguelBeneditProgramacion3_Infrastructure.Extensions;
 using MiguelBeneditProgramacion3_Service.Services;
 
@@ -17,6 +19,7 @@ namespace MiguelBeneditProgramacion3_Service.Extensions
         public static void AddEmpireConquerToModule(this IServiceCollection service, IConfiguration configuration) {
 
             service.AddEntityFramework(configuration);
+            service.AddScoped<IUnitOfWork, EntityFrameworkUnitOfWork<DBEmpireContext>>();
 
             service.AddScoped<IBaseService<City>, CityService>();
             service.AddScoped<IBaseService<User>, UserService>();
