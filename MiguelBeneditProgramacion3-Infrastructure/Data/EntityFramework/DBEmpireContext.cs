@@ -14,6 +14,8 @@ namespace MiguelBeneditProgramacion3_Infrastructure.Data.EntityFramework
         public DbSet<Map> Maps { get; set; }
         public DbSet<Quest> Quests { get; set; }
         public DbSet<Region> Regions { get; set; }
+        public DbSet<Guild> Guilds { get; set; }
+        public DbSet<RegionGuild> RegionGuilds { get; set; }
 
         public DBEmpireContext(DbContextOptions<DBEmpireContext> options) : base(options)
         {
@@ -88,9 +90,6 @@ namespace MiguelBeneditProgramacion3_Infrastructure.Data.EntityFramework
 
                 g.Property(g => g.Type)
                 .IsRequired();
-
-                g.Property(g => g.Image)
-                .IsRequired();
             });
 
             modelBuilder.Entity<Heroe>(h =>
@@ -116,6 +115,9 @@ namespace MiguelBeneditProgramacion3_Infrastructure.Data.EntityFramework
                 q.Property(q => q.LevelRequired)
                 .IsRequired();
             });
+
+            modelBuilder.Entity<RegionGuild>()
+                .HasKey(rg => new { rg.GuildId, rg.RegionId });
         }
     }
 }

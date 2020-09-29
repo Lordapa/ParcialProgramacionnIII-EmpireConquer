@@ -2,10 +2,10 @@
 
 namespace MiguelBeneditProgramacion3_Core.Entities
 {
-    public class Region:EntityBase
+    public class Guild:EntityBase
     {
         public string Name { get; set; }
-        public IEnumerable<Ground> Grounds { get; set; }
+        public string Description { get; set; }
         public IEnumerable<RegionGuild> RegionGuilds { get; set; }
     }
 }

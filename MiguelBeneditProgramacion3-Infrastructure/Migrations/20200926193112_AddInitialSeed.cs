@@ -9,6 +9,8 @@ namespace MiguelBeneditProgramacion3_Infrastructure.Migrations
         {
             migrationBuilder.Sql(File.ReadAllText("../MiguelBeneditProgramacion3-Infrastructure/Data/Seed/Map.sql"));
             migrationBuilder.Sql(File.ReadAllText("../MiguelBeneditProgramacion3-Infrastructure/Data/Seed/Game.sql"));
+            migrationBuilder.Sql(File.ReadAllText("../MiguelBeneditProgramacion3-Infrastructure/Data/Seed/Region.sql"));
+
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

@@ -23,6 +23,7 @@ namespace MiguelBeneditProgramacion3_Infrastructure.Extensions
             service.AddScoped<IRepository<Heroe>, HeroeRepository>();
             service.AddScoped<IRepository<Quest>, QuestRepository>();
             service.AddScoped<IRepository<User>, UserRepository>();
+            service.AddScoped<IRepository<Guild>, GuildRepository>();
         }
     }
 }

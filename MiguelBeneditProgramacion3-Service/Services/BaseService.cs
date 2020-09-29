@@ -10,8 +10,8 @@ namespace MiguelBeneditProgramacion3_Service.Services
 {
     public abstract class BaseService<TEntity> : IBaseService<TEntity> where TEntity: EntityBase
     {
-        private readonly IRepository<TEntity> _repository;
-        private readonly IUnitOfWork _unitOfWork;
+        protected readonly IRepository<TEntity> _repository;
+        protected readonly IUnitOfWork _unitOfWork;
         
         public BaseService(IUnitOfWork unitOfWork, IRepository<TEntity> repository)
         {

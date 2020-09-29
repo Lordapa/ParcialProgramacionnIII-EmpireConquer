@@ -27,6 +27,7 @@ namespace MiguelBeneditProgramacion3_Service.Extensions
             service.AddScoped<IBaseService<Heroe>, HeroeService>();
             service.AddScoped<IBaseService<Map>, MapService>();
             service.AddScoped<IBaseService<Quest>, QuestService>();
+            service.AddScoped<IGuildService, GuildService>();
             service.AddScoped<IBaseService<Game>, GameService>();
 
         }        
