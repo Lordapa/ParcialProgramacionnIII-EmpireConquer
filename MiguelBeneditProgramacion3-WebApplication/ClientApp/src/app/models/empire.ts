@@ -6,5 +6,6 @@ export interface IEmpire extends IBase{
     name: string,
     user: IUser,
     userId: number,
+    race:number,
     cities: ICity[]
 }

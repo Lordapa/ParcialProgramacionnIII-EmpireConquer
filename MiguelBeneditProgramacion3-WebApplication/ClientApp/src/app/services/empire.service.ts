@@ -1,18 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { IUser } from '../models/user';
+import { IEmpire } from '../models/empire';
 import { BaseHttpService } from './base-http.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class UserService extends BaseHttpService<IUser> {
+export class EmpireService extends BaseHttpService<IEmpire> {
   constructor(httpClient: HttpClient,@Inject('BASE_URL') private baseUrl: string) {
-    super(httpClient,baseUrl,'api/v1/user');
+    super(httpClient,baseUrl,'api/v1/empire');
   }
 
-  getUsers() {
+  getEmpires() {
     return this.get();
   }
 }

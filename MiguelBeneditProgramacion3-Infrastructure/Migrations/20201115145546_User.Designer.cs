@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MiguelBeneditProgramacion3_Infrastructure.Data.EntityFramework;
 
 namespace MiguelBeneditProgramacion3_Infrastructure.Migrations
 {
     [DbContext(typeof(DBEmpireContext))]
-    partial class DBEmpireContextModelSnapshot : ModelSnapshot
+    [Migration("20201115145546_User")]
+    partial class User
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

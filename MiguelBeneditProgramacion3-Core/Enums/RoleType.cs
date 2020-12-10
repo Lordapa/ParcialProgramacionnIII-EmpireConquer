@@ -6,7 +6,7 @@ namespace MiguelBeneditProgramacion3_Core.Enums
 {
     public enum RoleType
     {
-        Admin,
+        Admin = 1,
         User
     }
 }

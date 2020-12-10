@@ -28,7 +28,16 @@ namespace MiguelBeneditProgramacion3_WebApplication
             services.AddVersioning();
             services.AddSwagger();
             services.AddEmpireConquerToModule(Configuration);
-           
+            services.AddCors(options =>
+           {
+               options.AddDefaultPolicy(builder =>
+               {
+                   builder.WithOrigins("http://localhost:4200")
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+               });
+           });
+
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(
                    options =>
@@ -59,9 +68,8 @@ namespace MiguelBeneditProgramacion3_WebApplication
             }
 
             app.UseRouting();
-
             app.UseSwaggerWithVersioning(provider);
-
+            app.UseCors();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

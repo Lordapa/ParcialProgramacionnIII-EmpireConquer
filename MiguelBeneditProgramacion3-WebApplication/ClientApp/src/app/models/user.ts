@@ -1,5 +1,4 @@
 import { IBase } from "./base";
-import { RoleType } from "./roleType";
 
 export interface IUser extends IBase{
     firstName: string,
@@ -7,5 +6,5 @@ export interface IUser extends IBase{
     userName: string,
     email: string,
     password: string,
-    role:RoleType
+    role:number
 }

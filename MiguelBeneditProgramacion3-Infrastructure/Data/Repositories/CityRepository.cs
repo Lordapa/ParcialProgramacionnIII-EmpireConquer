@@ -7,7 +7,6 @@ namespace MiguelBeneditProgramacion3_Infrastructure.Data.Repositories
     {
         public CityRepository(DBEmpireContext context):base(context)
         {
-
         }
     }
 }

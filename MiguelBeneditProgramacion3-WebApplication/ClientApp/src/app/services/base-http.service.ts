@@ -38,6 +38,10 @@ export class BaseHttpService<T extends IBase> {
   }
 
   delete(entityId: number):Observable<boolean>{
-    return this.httpClient.delete<boolean>(this._baseUrl + '/' +  entityId);
+    const headers={
+      'Accept':'application/json',
+      'Content-Type':'application/json',
+    }
+    return this.httpClient.delete<boolean>(this._baseUrl + '/' +  entityId,{headers});
   }
 }
