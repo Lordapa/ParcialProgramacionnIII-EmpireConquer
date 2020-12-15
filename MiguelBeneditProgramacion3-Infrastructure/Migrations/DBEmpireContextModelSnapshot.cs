@@ -153,7 +153,6 @@ namespace MiguelBeneditProgramacion3_Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<byte[]>("Image")
-                        .IsRequired()
                         .HasColumnType("varbinary(max)");
 
                     b.Property<int>("Name")
@@ -176,6 +175,36 @@ namespace MiguelBeneditProgramacion3_Infrastructure.Migrations
                     b.HasIndex("RegionId");
 
                     b.ToTable("Grounds");
+                });
+
+            modelBuilder.Entity("MiguelBeneditProgramacion3_Core.Entities.Guild", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Guilds");
                 });
 
             modelBuilder.Entity("MiguelBeneditProgramacion3_Core.Entities.Heroe", b =>
@@ -341,6 +370,21 @@ namespace MiguelBeneditProgramacion3_Infrastructure.Migrations
                     b.ToTable("Regions");
                 });
 
+            modelBuilder.Entity("MiguelBeneditProgramacion3_Core.Entities.RegionGuild", b =>
+                {
+                    b.Property<long>("GuildId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("RegionId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("GuildId", "RegionId");
+
+                    b.HasIndex("RegionId");
+
+                    b.ToTable("RegionGuilds");
+                });
+
             modelBuilder.Entity("MiguelBeneditProgramacion3_Core.Entities.User", b =>
                 {
                     b.Property<long>("Id")
@@ -365,6 +409,9 @@ namespace MiguelBeneditProgramacion3_Infrastructure.Migrations
 
                     b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Role")
+                        .HasColumnType("int");
 
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -435,6 +482,21 @@ namespace MiguelBeneditProgramacion3_Infrastructure.Migrations
                     b.HasOne("MiguelBeneditProgramacion3_Core.Entities.Map", null)
                         .WithMany("Regions")
                         .HasForeignKey("MapId");
+                });
+
+            modelBuilder.Entity("MiguelBeneditProgramacion3_Core.Entities.RegionGuild", b =>
+                {
+                    b.HasOne("MiguelBeneditProgramacion3_Core.Entities.Guild", "Guild")
+                        .WithMany("RegionGuilds")
+                        .HasForeignKey("GuildId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MiguelBeneditProgramacion3_Core.Entities.Region", "Region")
+                        .WithMany("RegionGuilds")
+                        .HasForeignKey("RegionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

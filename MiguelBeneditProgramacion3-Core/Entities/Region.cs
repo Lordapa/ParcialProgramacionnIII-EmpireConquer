@@ -6,5 +6,6 @@ namespace MiguelBeneditProgramacion3_Core.Entities
     {
         public string Name { get; set; }
         public IEnumerable<Ground> Grounds { get; set; }
+        public IEnumerable<RegionGuild> RegionGuilds { get; set; }
     }
 }

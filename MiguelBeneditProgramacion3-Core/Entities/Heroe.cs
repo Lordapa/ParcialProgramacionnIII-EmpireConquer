@@ -1,5 +1,4 @@
 ﻿using MiguelBeneditProgramacion3_Core.Enums;
-using System;
 
 namespace MiguelBeneditProgramacion3_Core.Entities
 {

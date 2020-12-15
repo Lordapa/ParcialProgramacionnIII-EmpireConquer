@@ -87,9 +87,21 @@
             Game api controller
             </summary>
         </member>
+        <member name="M:MiguelBeneditProgramacion3_WebApplication.V1.Controllers.GuildController.GetByRegionId(System.Int64)">
+            <summary>
+            Get an Guild list base on a Region Id
+            </summary>
+            <param name="regionId">regionId</param>
+            <returns>Entity</returns>
+        </member>
         <member name="T:MiguelBeneditProgramacion3_WebApplication.V1.Controllers.HeroeController">
             <summary>
             Heroe api controller
+            </summary>
+        </member>
+        <member name="T:MiguelBeneditProgramacion3_WebApplication.V1.Controllers.LoginController">
+            <summary>
+            Login api controller
             </summary>
         </member>
         <member name="T:MiguelBeneditProgramacion3_WebApplication.V1.Controllers.MapController">

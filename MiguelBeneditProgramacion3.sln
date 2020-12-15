@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiguelBeneditProgramacion3-
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiguelBeneditProgramacion3-WebAppi", "MiguelBeneditProgramacion3-WebAppi\MiguelBeneditProgramacion3-WebAppi.csproj", "{4D1D13DA-DFD5-40FD-B5B7-211E28FD0DA8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiguelBeneditProgramacion3-WebApplication", "MiguelBeneditProgramacion3-WebApplication\MiguelBeneditProgramacion3-WebApplication.csproj", "{886A8791-A953-4DFB-9E1C-3EE2CD3C5F7D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{4D1D13DA-DFD5-40FD-B5B7-211E28FD0DA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D1D13DA-DFD5-40FD-B5B7-211E28FD0DA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D1D13DA-DFD5-40FD-B5B7-211E28FD0DA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{886A8791-A953-4DFB-9E1C-3EE2CD3C5F7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{886A8791-A953-4DFB-9E1C-3EE2CD3C5F7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{886A8791-A953-4DFB-9E1C-3EE2CD3C5F7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{886A8791-A953-4DFB-9E1C-3EE2CD3C5F7D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -6,6 +6,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MiguelBeneditProgramacion3_Service.Extensions;
 using MiguelBeneditProgramacion3_WebApplication.Swagger;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System.Text;
+using Microsoft.IdentityModel.Logging;
 
 namespace MiguelBeneditProgramacion3_WebApplication
 {
@@ -24,6 +28,34 @@ namespace MiguelBeneditProgramacion3_WebApplication
             services.AddVersioning();
             services.AddSwagger();
             services.AddEmpireConquerToModule(Configuration);
+            services.AddCors(options =>
+           {
+               options.AddDefaultPolicy(builder =>
+               {
+                   builder.WithOrigins("http://localhost:4200")
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+               });
+           });
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(
+                   options =>
+                   {
+                       options.RequireHttpsMetadata = false;
+                       options.SaveToken = true;
+                       options.TokenValidationParameters = new TokenValidationParameters
+                       {
+                           ValidateIssuer = true,
+                           ValidateAudience = true,
+                           ValidateIssuerSigningKey = true,
+                           ValidateLifetime = true,
+                           ValidIssuer = Configuration["Jwt:Issuer"],
+                           ValidAudience = Configuration["Jwt:Audience"],
+                           IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:SecretKey"]))
+                       };
+                   }
+                );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -31,13 +63,13 @@ namespace MiguelBeneditProgramacion3_WebApplication
         {
             if (env.IsDevelopment())
             {
+                IdentityModelEventSource.ShowPII = true;
                 app.UseDeveloperExceptionPage();
             }
 
             app.UseRouting();
-
             app.UseSwaggerWithVersioning(provider);
-
+            app.UseCors();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
