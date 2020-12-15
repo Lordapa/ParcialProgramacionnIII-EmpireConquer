@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-nav-menu',
@@ -7,7 +9,15 @@ import { Component } from '@angular/core';
 })
 export class NavMenuComponent {
   isExpanded = false;
+  isLogged = false;
+  /**
+   *
+   */
 
+  constructor(
+    protected route: Router,
+    protected authService: AuthService){
+    }
   collapse() {
     this.isExpanded = false;
   }
@@ -16,8 +26,9 @@ export class NavMenuComponent {
     this.isExpanded = !this.isExpanded;
   }
 
-    
   logOut (){
-    console.log("Loggi")
+    this.isLogged = false;
+    this.authService.logOut();
+    this.route.navigate(['']);
   }
 }

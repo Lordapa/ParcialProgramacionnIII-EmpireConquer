@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using MiguelBeneditProgramacion3_Core.Entities;
 using MiguelBeneditProgramacion3_Core.Enums;
 using System.Text;
+using MiguelBeneditProgramacion3_Core.Interfaces.Services;
 
 namespace MiguelBeneditProgramacion3_WebApplication.V1.Controllers
 {
@@ -20,10 +21,12 @@ namespace MiguelBeneditProgramacion3_WebApplication.V1.Controllers
     public class LoginController:ControllerBase
     {
         private readonly IConfiguration _config;
+        private readonly IAuthService _authService;
 
-        public LoginController(IConfiguration configuration)
+        public LoginController(IAuthService authService,IConfiguration configuration)
         {
             _config = configuration;
+            _authService = authService;
         }
 
         [HttpPost]
@@ -36,7 +39,7 @@ namespace MiguelBeneditProgramacion3_WebApplication.V1.Controllers
             if (user != null)
             {
                 string tokenString = GenerateToken(user);
-                response = Ok(new { token = tokenString, userData = user });
+                response = Ok(new { token = tokenString });
             }
 
             return response;
@@ -44,20 +47,7 @@ namespace MiguelBeneditProgramacion3_WebApplication.V1.Controllers
 
         private User Authenticate(User credentials)
         {
-            //validate credential in database y encriptar credentias
-            var credentialData = new User()
-            {
-                FirstName = "SuperAdmin",
-                CreatedBy = "Miguel",
-                CreatedDate = DateTime.Now,
-                Email = "a@a.com",
-                Id = 1,
-                LastName = "SuperAdmin",
-                Password = "12345",
-                Role = RoleType.Admin
-            };
-
-            return credentialData;
+            return _authService.ValidateUserCredential(credentials.UserName, credentials.Password);
         }
 
         private string GenerateToken(User credentialData)

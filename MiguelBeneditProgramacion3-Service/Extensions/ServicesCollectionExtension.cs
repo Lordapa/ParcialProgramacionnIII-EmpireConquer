@@ -22,7 +22,8 @@ namespace MiguelBeneditProgramacion3_Service.Extensions
             service.AddScoped<IUnitOfWork, EntityFrameworkUnitOfWork<DBEmpireContext>>();
 
             service.AddScoped<IBaseService<City>, CityService>();
-            service.AddScoped<IBaseService<User>, UserService>();
+            service.AddScoped<IUserService, UserService>();
+            service.AddScoped<IAuthService, AuthService>();
             service.AddScoped<IBaseService<Empire>, EmpireService>();
             service.AddScoped<IBaseService<Heroe>, HeroeService>();
             service.AddScoped<IBaseService<Map>, MapService>();

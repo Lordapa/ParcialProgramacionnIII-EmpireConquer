@@ -8,7 +8,7 @@ namespace MiguelBeneditProgramacion3_WebApplication.V1.Controllers
     /// </summary>
     public class UserController : BaseApiController<User>
     {
-        public UserController(IBaseService<User> baseService) : base(baseService)
+        public UserController(IUserService baseService) : base(baseService)
         {
         }
     }

@@ -11,6 +11,13 @@ import { EmpireComponent } from './empire/empire.component';
 import { UserComponent } from './user/user.component';
 import { UserFormComponent } from './user/user-form/user-form.component';
 import { EmpireFormComponent } from './empire/empire-form/empire-form.component';
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './login/guards/auth.guard';
+import {JwtModule} from '@auth0/angular-jwt'
+
+export function tokenGetter(){
+  return localStorage.getItem("jwt");
+}
 
 @NgModule({
   declarations: [
@@ -20,6 +27,7 @@ import { EmpireFormComponent } from './empire/empire-form/empire-form.component'
     UserComponent,
     UserFormComponent,
     EmpireComponent,
+    LoginComponent,
     EmpireFormComponent
   ],
   imports: [
@@ -28,17 +36,25 @@ import { EmpireFormComponent } from './empire/empire-form/empire-form.component'
     ReactiveFormsModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'users', component: UserComponent, pathMatch: 'full' },
-      { path: 'user/:id', component: UserFormComponent, pathMatch: 'full' },
-      { path: 'user-create', component: UserFormComponent, pathMatch: 'full' },
-      { path: 'empires', component: EmpireComponent, pathMatch: 'full' },
-      { path: 'empire/:id', component: EmpireFormComponent, pathMatch: 'full' },
-      { path: 'empire-create', component: EmpireFormComponent, pathMatch: 'full' },
-      
-    ])
+      { path: '', component: HomeComponent, pathMatch: 'full'},
+      { path: 'login', component: LoginComponent, pathMatch: 'full' },
+      { path: 'users', component: UserComponent, pathMatch: 'full', canActivate:[AuthGuard] },
+      { path: 'user/:id', component: UserFormComponent, pathMatch: 'full', canActivate:[AuthGuard] },
+      { path: 'user-create', component: UserFormComponent, pathMatch: 'full', canActivate:[AuthGuard] },
+      { path: 'empires', component: EmpireComponent, pathMatch: 'full', canActivate:[AuthGuard] },
+      { path: 'empire/:id', component: EmpireFormComponent, pathMatch: 'full', canActivate:[AuthGuard] },
+      { path: 'empire-create', component: EmpireFormComponent, pathMatch: 'full', canActivate:[AuthGuard] },
+
+    ]),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains:['localhost:57078'],
+        disallowedRoutes:[]
+      }
+    })
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
